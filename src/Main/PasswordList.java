@@ -1,9 +1,12 @@
 package Main;
 
+import java.util.Scanner;
+
 public class PasswordList {	//Clase para almacenar la lista de contraseñas
 	
 	private String[] passwords;	//Array de Strings que contiene todas las contraseñas
 	private boolean empty = true; //Boolean que indica si la lista está vacía
+	Scanner in = new Scanner(System.in);	//El Scanner
 	
 	public void addPassword (String str) {	//Método que añade un valor de tipo String al final de la lista de contraseñas "passwords"
 		if (empty) {	//Si está vacío...
@@ -34,12 +37,30 @@ public class PasswordList {	//Clase para almacenar la lista de contraseñas
 					temp[i] = passwords[i];	//Copia todo los valores de "passwords" a "temp"
 				}
 				passwords = new String[temp.length - 1]; //Vuelve a crear "passwords", con un valor menos que "temp"
-				for(int i = 0; i < temp.length; i++){
+				for(int i = 0; i < (temp.length - 1); i++){
 					passwords[i] = temp[i+1];	//Copia todo los valores de "temp" a "passwords" moviéndolos una posición hacia delante
 				}
 				return temp[0]; //Devuelve el primero de "temp", que era el primero de "passwords"
 			}
 		}
-		return new String(Codes.ERROR); //CODIGO ERROR
+		return Codes.EOL;	//CODIGO EOL (End Of List)
+	}
+	
+	public PasswordList (){	//Este metodo se ejecuta cada vez que se declara una variable (un objeto) de tipo (de la clase) PasswordList
+		System.out.println("Ingrese la lista de contraseñas. Una por línea. Ingrese 'fin' para finalizar\n");
+		String str;
+		do {
+			System.out.print("> ");
+			str = in.next();	//Guarda el input del usuario
+			if (!str.equals("fin")) {	//Si no es "fin"...
+				addPassword(str); //La añade a la lista
+				if(empty) empty = false;
+			}
+		} while (!str.equals("fin"));
+	}
+	
+	public int length (){
+		if(!empty) return passwords.length;
+		return 0;
 	}
 }
