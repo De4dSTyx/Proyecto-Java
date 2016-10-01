@@ -12,11 +12,14 @@ PassUTU está desarrollando un generador de passwords.
 Su trabajo en el departamento de control de calidad es probar el generador y asegurarse de que
 los passwords sean aceptables. Para ser aceptable, el password debe satisfacer estas tres
 reglas:
-	1. Debe contener al menos una vocal.
-	2. No debe tener tres vocales consecutivas o tres consonantes consecutivas.
-	3. No debe tener dos ocurrencias consecutivas de la misma letra, excepto por „ee‟ o „oo‟.
-	(Para el propósito de este problema, las vocales son 'a', 'e', 'i', 'o', y 'u'; todas las demás letras
-	son consonantes.)
+
+1. Debe contener al menos una vocal.
+
+2. No debe tener tres vocales consecutivas o tres consonantes consecutivas.
+
+3. No debe tener dos ocurrencias consecutivas de la misma letra, excepto por „ee‟ o „oo‟.
+
+(Para el propósito de este problema, las vocales son 'a', 'e', 'i', 'o', y 'u'; todas las demás letras son consonantes.)
 	
 Note que estas reglas no son perfectas; habrán muchas palabras comunes/pronunciables que no
 son aceptables.
