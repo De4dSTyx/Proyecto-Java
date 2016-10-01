@@ -24,5 +24,3 @@ O para incluír todas las clases de un Package se usa:
 	
 Links útiles:
 https://syntaxdb.com/ref/java
-
-28
