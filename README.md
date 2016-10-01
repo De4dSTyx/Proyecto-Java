@@ -8,8 +8,15 @@ Las distantas clases son archivos independientes con el nombre "Clase.java" dent
 
 Dentro del archivo de clase, se debe seguir el siguiente formato:
 	
-	package [PackageName]
-	public class [className] {
+	package [PackageName];
+	public class [ClassName] {
 		public static void main(String[] args) {
 		}
 	}
+
+Para incluír una clase de otro Package se usa:
+
+	import [PackageName]/[ClassName];
+	
+Links útiles:
+https://syntaxdb.com/ref/java
