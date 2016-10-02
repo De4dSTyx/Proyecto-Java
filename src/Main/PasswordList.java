@@ -46,7 +46,7 @@ public class PasswordList {	//Clase para almacenar la lista de contraseñas
 		return Codes.EOL;	//CODIGO EOL (End Of List)
 	}
 	
-	public PasswordList (){	//Este metodo se ejecuta cada vez que se declara una variable (un objeto) de tipo (de la clase) PasswordList
+	public void askForPasswords (){
 		System.out.println("Ingrese la lista de contraseñas. Una por línea. Ingrese 'fin' para finalizar\n");
 		String str;
 		do {
@@ -62,5 +62,9 @@ public class PasswordList {	//Clase para almacenar la lista de contraseñas
 	public int length (){
 		if(!empty) return passwords.length;
 		return 0;
+	}
+	
+	public PasswordList (){	//Este metodo se ejecuta cada vez que se declara una variable (un objeto) de tipo (de la clase) PasswordList
+		
 	}
 }
