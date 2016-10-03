@@ -8,8 +8,8 @@ public class Proyecto {
 		String input = null, output = null;	//Localizacion de los archivos de entrada y salida
 		if (args.length > 0) {	//Si hay argumentos...
 			for (int i = 0; i < args.length; i++) {	//Pasa por todos los argumentos
-				if (args[i].substring(0, 1).equals("<")) input = args[i].substring(1);	//Agarro el primer caracter y lo comparo con "<", si empieza por "<" lo uso como input
-				if (args[i].substring(0, 1).equals(">")) output = args[i].substring(1);	//Agarro el primer caracter y lo comparo con ">", si empieza por ">" lo uso como output
+				if (args[i].charAt(0) == '<') input = args[i].substring(1);	//Agarro el primer caracter y lo comparo con "<", si empieza por "<" lo uso como input
+				if (args[i].charAt(0) == '>') output = args[i].substring(1);	//Agarro el primer caracter y lo comparo con ">", si empieza por ">" lo uso como output
 			}
 			if (input != null) {	//Si hay un input
 				System.out.println("Cargando desde archivo...");
