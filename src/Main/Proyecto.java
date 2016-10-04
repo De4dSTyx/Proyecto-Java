@@ -7,19 +7,20 @@ public class Proyecto {
 		PasswordList lista = new PasswordList(); //Se crea la variable
 		String input = null, output = null;	//Localizacion de los archivos de entrada y salida
 		if (args.length > 0) {	//Si hay argumentos...
-			for (int i = 0; i < args.length; i++) {	//Pasa por todos los argumentos
+			/*for (int i = 0; i < args.length; i++) {	//Pasa por todos los argumentos
 				if (args[i].charAt(0) == '<') input = args[i].substring(1);	//Agarro el primer caracter y lo comparo con "<", si empieza por "<" lo uso como input
 				if (args[i].charAt(0) == '>') output = args[i].substring(1);	//Agarro el primer caracter y lo comparo con ">", si empieza por ">" lo uso como output
-			}
+			}*/
+			input = args[0];
 			if (input != null) {	//Si hay un input
 				System.out.println("Cargando desde archivo...");
 				lista = FileLoader.load(input);	//Carga el archivo "input"
-			} else lista.askForPasswords();	//Si hay argumentos pero no hay input, pide las contraseñas
+			} else lista.askForPasswords();	//Si hay argumentos pero no hay input, pide las contraseÃ±as
 		} else {
-			lista.askForPasswords();	//Si no hay argumentos, pide las contraseñas
+			lista.askForPasswords();	//Si no hay argumentos, pide las contraseÃ±as
 		}
-		//------------ \|/ Acá abajo iría el código de verdad
-		System.out.println("Las contraseñas (" + lista.length() + ") son:");
+		//------------ \|/ AcÃ¡ abajo irÃ­a el cÃ³digo de verdad
+		System.out.println("Las contraseÃ±as (" + lista.length() + ") son:");
 		String str;
 		do {
 			str = lista.nextPassword();
