@@ -15,7 +15,7 @@ public class FileLoader {	//Clase que se encarga de cargar contraseñas de archiv
 				linea = linea.trim();	//Elimina los espacios al principio y final de la linea
 				String[] palabras = linea.split(" "); //Separa las lineas por espacios
 				for(int i = 0; i < palabras.length; i++){
-					lista.addPassword(palabras[i]);	//Añade cada palabra a la lista de contraseñas
+					if (palabras[i] != null) lista.addPassword(palabras[i]);	//Añade cada palabra a la lista de contraseñas
 				}
 			}
 			archivo.close();

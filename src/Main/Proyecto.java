@@ -5,22 +5,23 @@ import AdditionalFeatures.*;
 public class Proyecto {
 	public static void main(String[] args) {
 		PasswordList lista = new PasswordList(); //Se crea la variable
-		String input = null, output = null;	//Localizacion de los archivos de entrada y salida
+		String input = null;	//Localizacion de los archivos de entrada y salida
+		boolean log = false;
 		if (args.length > 0) {	//Si hay argumentos...
-			/*for (int i = 0; i < args.length; i++) {	//Pasa por todos los argumentos
-				if (args[i].charAt(0) == '<') input = args[i].substring(1);	//Agarro el primer caracter y lo comparo con "<", si empieza por "<" lo uso como input
-				if (args[i].charAt(0) == '>') output = args[i].substring(1);	//Agarro el primer caracter y lo comparo con ">", si empieza por ">" lo uso como output
-			}*/
-			input = args[0];
+			for (int i = 0; i < args.length; i++) {	//Pasa por todos los argumentos
+				if (args[i].equalsIgnoreCase("log")) log = true;
+				else input = args[i];
+			}
 			if (input != null) {	//Si hay un input
 				System.out.println("Cargando desde archivo...");
 				lista = FileLoader.load(input);	//Carga el archivo "input"
-			} else lista.askForPasswords();	//Si hay argumentos pero no hay input, pide las contraseÃ±as
+			} else lista.askForPasswords();	//Si hay argumentos pero no hay input, pide las contraseñas
 		} else {
-			lista.askForPasswords();	//Si no hay argumentos, pide las contraseÃ±as
+			lista.askForPasswords();	//Si no hay argumentos, pide las contraseñas
 		}
-		//------------ \|/ AcÃ¡ abajo irÃ­a el cÃ³digo de verdad
-		System.out.println("Las contraseÃ±as (" + lista.length() + ") son:");
+		//------------ \|/ Acà abajo irìa el còdigo de verdad
+		System.out.println(log?"true":"false");
+		System.out.println("Las contraseñas (" + lista.length() + ") son:");
 		String str;
 		do {
 			str = lista.nextPassword();
