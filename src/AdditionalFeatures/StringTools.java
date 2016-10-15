@@ -34,6 +34,11 @@ public class StringTools {
 		}
 		return b;
 	}
+	static public boolean isVocal (char c) {	//Retorna true si el caracter esta en minúscula
+		if(c == 'a' || c == 'e' || c == 'i' ||
+		   c == 'o' || c == 'u') return true;
+		return false;	
+	}
 	static public char upperCase (char c) {	//Si está en minúscula, la pasa a mayúscula
 		if(isLowerCase (c)) return (char) (c - 32);
 		return c;
