@@ -19,19 +19,26 @@ public class StringTools {
 		}
 		return b;	//Solo va a ser true si todos son true
 	}	
-	static public boolean isUpperCase (char c) {	//Retorna true si el caracter esta en mayúscula
+	static public boolean isUpperCase (char c) {	//Retorna true si el caracter esta en mayÃºscula
 		if((c>=65)&&(c<=90)) return true;
 		return false;
 	}
-	static public boolean isLowerCase (char c) {	//Retorna true si el caracter esta en minúscula
+	static public boolean isLowerCase (char c) {	//Retorna true si el caracter esta en minÃºscula
 		if((c>=97)&&(c<=122)) return true;
 		return false;
 	}
-	static public char upperCase (char c) {	//Si está en minúscula, la pasa a mayúscula
+	static public boolean isLowerCase (char[] ca) {
+		boolean b = true;
+		for (int i = 0; i < ca.length; i++) {
+			b &= isLowerCase(ca[i]);
+		}
+		return b;
+	}
+	static public char upperCase (char c) {	//Si estÃ¡ en minÃºscula, la pasa a mayÃºscula
 		if(isLowerCase (c)) return (char) (c - 32);
 		return c;
 	}
-	static public char lowerCase (char c) {	//Si está en mayúsucla, la pasa a minúscula
+	static public char lowerCase (char c) {	//Si estÃ¡ en mayÃºsucla, la pasa a minÃºscula
 		if(isUpperCase (c)) return (char) (c + 32);
 		return c;
 	}
