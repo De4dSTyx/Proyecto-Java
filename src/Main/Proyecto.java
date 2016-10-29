@@ -15,17 +15,22 @@ public class Proyecto {
 			if (input != null) {	//Si hay un input
 				System.out.println("Cargando desde archivo...");
 				lista = FileLoader.load(input);	//Carga el archivo "input"
-			} else lista.askForPasswords();	//Si hay argumentos pero no hay input, pide las contraseÒas
+			} else lista.askForPasswords();	//Si hay argumentos pero no hay input, pide las contrase√±as
 		} else {
-			lista.askForPasswords();	//Si no hay argumentos, pide las contraseÒas
+			lista.askForPasswords();	//Si no hay argumentos, pide las contrase√±as
 		}
-		//------------ \|/ Ac‡ abajo irÏa el cÚdigo de verdad
+		//------------ \|/ Ac√† abajo ir√¨a el c√≤digo de verdad
 		System.out.println(log?"true":"false");
-		System.out.println("Las contraseÒas (" + lista.length() + ") son:");
+		System.out.println("Las contrase√±as (" + lista.length() + ") son:");
 		String str;
+		boolean isPasswordCorrect = false;
 		do {
 			str = lista.nextPassword();
-			if (str != Codes.EOL) System.out.println(str);
+			if (str != Codes.EOL) {
+				isPasswordCorrect = PasswordVerifier.verify(str);
+				if (isPasswordCorrect) System.out.println("<" + str + "> es aceptado");
+				else System.out.println("<" + str + "> no fue aceptado");
+			}
 		} while (str != Codes.EOL);
 	}
 }
