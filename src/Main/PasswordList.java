@@ -26,6 +26,14 @@ public class PasswordList {	//Clase para almacenar la lista de contraseñas
 		}
 	}
 	
+	public void add (PasswordList list) {
+		String str;
+		do {
+			str = list.nextPassword();
+			if (str != Codes.EOL) addPassword(str);
+		} while (str != Codes.EOL);
+	}
+	
 	public String nextPassword () {
 		if(!empty){//Si no esta vacío... (si lo está no hay nada que leer)
 			if(passwords.length == 1) { //Si queda una contraseña
@@ -66,5 +74,18 @@ public class PasswordList {	//Clase para almacenar la lista de contraseñas
 	
 	public PasswordList (){	//Este metodo se ejecuta cada vez que se declara una variable (un objeto) de tipo (de la clase) PasswordList
 		
+	}
+	
+	public String[] getStringArray () {
+		return passwords;
+	}
+	
+	public boolean isEmpty () {
+		return empty;
+	}
+	
+	public PasswordList (PasswordList template) {
+		passwords = template.getStringArray();
+		empty = template.isEmpty();
 	}
 }

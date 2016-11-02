@@ -1,5 +1,7 @@
 package AdditionalFeatures;
 
+import Main.*;
+
 public class TempPassword {
 	private char[] password;
 	private boolean empty = true;
