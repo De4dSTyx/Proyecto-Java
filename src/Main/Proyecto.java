@@ -128,7 +128,7 @@ public class Proyecto {
 	
 	private static PasswordList generate(PasswordList list, int c){
 		for(int i = 0; i < c; i++){
-			list.addPassword(Generator.generate());
+			list.addPassword(new RandomPassword().toString());
 		}
 		return list;
 	}
