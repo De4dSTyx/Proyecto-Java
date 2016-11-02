@@ -1,7 +1,8 @@
 package AdditionalFeatures;
 
 public class RandomManager {
-	private static long ran = System.currentTimeMillis()%1000000000;
+	private static long ran;
+	private static long time = System.currentTimeMillis();
 
 	private static long[] probabilidad = {	1000000000,
 											 980000000,
@@ -25,7 +26,13 @@ public class RandomManager {
 											 500000000,
 											 000000000};
 	
+	private static void resetRan () {
+		time = System.currentTimeMillis();
+		ran = time%1000000000;
+	}
+	
 	private static void refreshRan () {
+		if(time != System.currentTimeMillis()) resetRan();
 		ran *= ran;
 		ran %= 1000000000;
 	}
