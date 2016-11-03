@@ -7,13 +7,13 @@ public class Proyecto {
 	static Scanner in = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		PasswordList lista = new PasswordList();
+		PasswordDatabase lista = new PasswordDatabase();
 		int menu = 1;
 		int opc;
 		do{
 			printOptions(menu);
 			opc = in.nextInt();
-			PasswordList listaTemp;
+			PasswordDatabase listaTemp;
 			switch(menu) {
 			case 1:
 				switch(opc){
@@ -21,15 +21,15 @@ public class Proyecto {
 					menu = 2;
 					break;
 				case 2:
-					listaTemp = new PasswordList(lista);
-					showPasswordList(listaTemp);
+					listaTemp = new PasswordDatabase(lista);
+					showPasswordDatabase(listaTemp);
 					break;
 				case 3:
-					listaTemp = new PasswordList(lista);
+					listaTemp = new PasswordDatabase(lista);
 					showSecurity(listaTemp);
 					break;
 				case 4:
-					listaTemp = new PasswordList(lista);
+					listaTemp = new PasswordDatabase(lista);
 					verify(listaTemp);
 					break;
 				case 5:
@@ -75,7 +75,7 @@ public class Proyecto {
 			case 3:
 				switch(opc){
 				case 1:
-					lista = new PasswordList();
+					lista = new PasswordDatabase();
 				default:
 					menu = 1;
 					break;
@@ -103,7 +103,7 @@ public class Proyecto {
 		System.out.print("Opción: ");
 	}
 	
-	private static void showPasswordList(PasswordList list) {
+	private static void showPasswordDatabase(PasswordDatabase list) {
 		System.out.println("Hay un total de " + list.length() + " contraseñas");
 		String password;
 		do {
@@ -114,7 +114,7 @@ public class Proyecto {
 		} while (password != Codes.EOL);
 	}
 	
-	private static void showSecurity(PasswordList list) {
+	private static void showSecurity(PasswordDatabase list) {
 		String password;
 		do {
 			password = list.nextPassword();
@@ -125,7 +125,7 @@ public class Proyecto {
 		} while (password != Codes.EOL);
 	}
 	
-	private static void verify(PasswordList list) {
+	private static void verify(PasswordDatabase list) {
 		String password;
 		boolean isPasswordCorrect;
 		do {
@@ -138,7 +138,7 @@ public class Proyecto {
 		} while (password != Codes.EOL);
 	}
 	
-	private static PasswordList generate(PasswordList list, int c){
+	private static PasswordDatabase generate(PasswordDatabase list, int c){
 		long startTime = System.currentTimeMillis();
 		for(int i = 0; i < c; i++){
 			list.addPassword(new RandomPassword().toString());
@@ -149,7 +149,7 @@ public class Proyecto {
 	}
 	
 	private static void _62656e63686d61726b(int _6365726f73) { //507275656261206c61206361706163696461642064656c2070726f6772616d61
-		PasswordList _6c69737461 = new PasswordList(); //437265616d6f7320756e2050617373776f72644c69737420646520707275656261
+		PasswordDatabase _6c69737461 = new PasswordDatabase(); //437265616d6f7320756e2050617373776f72644c69737420646520707275656261
 		
 		for(int _69 = 0; _69 <= _6365726f73; _69++) { /*536520656a6563757461205f36333635373236663733202b20312076656365732c20
 		6c61207072696d65726120636f6e20312c206465737075657320636f6e2031302c203130302c2079206173c3ad2e*/
@@ -158,7 +158,7 @@ public class Proyecto {
 				_63616e7469646164 *= 10;
 			}
 			generate(_6c69737461, _63616e7469646164); //47656e657261206c617320636f6e7472617365c3b16173
-			_6c69737461 = new PasswordList(); //59206c617320626f727261
+			_6c69737461 = new PasswordDatabase(); //59206c617320626f727261
 		}
 	}
 }

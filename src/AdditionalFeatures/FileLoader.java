@@ -5,8 +5,8 @@ import java.io.*;
 
 public class FileLoader {	//Clase que se encarga de cargar contraseñas de archivos .txt
 	
-	static public PasswordList load(String path) {
-		PasswordList lista = new PasswordList();
+	static public PasswordDatabase load(String path) {
+		PasswordDatabase lista = new PasswordDatabase();
 		try {	//Intenta ejecutar el código, pero pueden ocurrir dos posibles errores
 			FileReader archivo = new FileReader(path);	//Abro el archivo con el path proporcionado
 			BufferedReader lector = new BufferedReader(archivo);	//Como un Scanner pero para archivos, uso el archivo de antes

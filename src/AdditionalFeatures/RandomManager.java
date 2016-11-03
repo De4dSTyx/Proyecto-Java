@@ -38,6 +38,8 @@ public class RandomManager {
 	}
 
 	public static boolean nextChance (int index) {
+		if (index > 20) index = 20;
+		if (index < 0) index = 0;
 		refreshRan();
 		if (ran <= probabilidad[index]) return true;
 		return false;
