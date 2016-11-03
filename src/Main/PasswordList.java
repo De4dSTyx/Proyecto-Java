@@ -6,24 +6,28 @@ public class PasswordList {	//Clase para almacenar la lista de contraseñas
 	
 	private String[] passwords;	//Array de Strings que contiene todas las contraseñas
 	private boolean empty = true; //Boolean que indica si la lista está vacía
+	final static public int max = 5000;
 	Scanner in = new Scanner(System.in);	//El Scanner
 	
-	public void addPassword (String str) {	//Método que añade un valor de tipo String al final de la lista de contraseñas "passwords"
-		if (empty) {	//Si está vacío...
-			passwords = new String[1];
-			passwords[0] = str;	//Simplemente añade el primer String
-			empty = false;	//Y deja de estar vacío
-		} else {
-			String[] temp = new String[passwords.length + 1];	//Crea un nuevo array de Strings, con un valor mas que "passwords"
-			for(int i = 0; i < passwords.length; i++){
-				temp[i] = passwords[i];	//Copia todo los valores de "passwords" a "temp"
+	public String addPassword (String str) {	//Método que añade un valor de tipo String al final de la lista de contraseñas "passwords"
+		if(length() < max) {
+			if (empty) {	//Si está vacío...
+				passwords = new String[1];
+				passwords[0] = str;	//Simplemente añade el primer String
+				empty = false;	//Y deja de estar vacío
+			} else {
+				String[] temp = new String[passwords.length + 1];	//Crea un nuevo array de Strings, con un valor mas que "passwords"
+				for(int i = 0; i < passwords.length; i++){
+					temp[i] = passwords[i];	//Copia todo los valores de "passwords" a "temp"
+				}
+				temp[passwords.length] = str; //Añade el nuevo String en el último índice de "temp"
+				passwords = new String[temp.length]; //Vuelve a crear "passwords", con el tamaño de "temp"
+				for(int i = 0; i < temp.length; i++){
+					passwords[i] = temp[i];	//Copia todo los valores de "temp" a "passwords"
+				}
 			}
-			temp[passwords.length] = str; //Añade el nuevo String en el último índice de "temp"
-			passwords = new String[temp.length]; //Vuelve a crear "passwords", con el tamaño de "temp"
-			for(int i = 0; i < temp.length; i++){
-				passwords[i] = temp[i];	//Copia todo los valores de "temp" a "passwords"
-			}
-		}
+			return Codes.OK;
+		} else return Codes.ERROR;
 	}
 	
 	public void add (PasswordList list) {
@@ -52,19 +56,6 @@ public class PasswordList {	//Clase para almacenar la lista de contraseñas
 			}
 		}
 		return Codes.EOL;	//CODIGO EOL (End Of List)
-	}
-	
-	public void askForPasswords (){
-		System.out.println("Ingrese la lista de contraseñas. Una por línea. Ingrese 'fin' para finalizar\n");
-		String str;
-		do {
-			System.out.print("> ");
-			str = in.next();	//Guarda el input del usuario
-			if (!str.equals("fin")) {	//Si no es "fin"...
-				addPassword(str); //La añade a la lista
-				if(empty) empty = false;
-			}
-		} while (!str.equals("fin"));
 	}
 	
 	public int length (){
