@@ -19,31 +19,31 @@ public class StringTools {
 		}
 		return b;	//Solo va a ser true si todos son true
 	}	
-	static public boolean isUpperCase (char c) {	//Retorna true si el caracter esta en mayÃºscula
+	static public boolean isUpperCase (char c) {	//Retorna true si el caracter esta en mayúscula
 		if((c>=65)&&(c<=90)) return true;
 		return false;
 	}
-	static public boolean isLowerCase (char c) {	//Retorna true si el caracter esta en minÃºscula
+	static public boolean isLowerCase (char c) {	//Retorna true si el caracter esta en minúscula
 		if((c>=97)&&(c<=122)) return true;
 		return false;
 	}
-	static public boolean isLowerCase (char[] ca) {
+	static public boolean isLowerCase (char[] ca) {	//Retorna true si todo el array de caracteres esta en minúscula
 		boolean b = true;
 		for (int i = 0; i < ca.length; i++) {
 			b &= isLowerCase(ca[i]);
 		}
 		return b;
 	}
-	static public boolean isVocal (char c) {	//Retorna true si el caracter esta en minÃºscula
+	static public boolean isVocal (char c) {	//Retorna true si el caracter es vocal
 		if(c == 'a' || c == 'e' || c == 'i' ||
 		   c == 'o' || c == 'u') return true;
 		return false;	
 	}
-	static public char upperCase (char c) {	//Si estÃ¡ en minÃºscula, la pasa a mayÃºscula
+	static public char upperCase (char c) {	//Si estÃ¡ en minúscula, la pasa a mayúscula
 		if(isLowerCase (c)) return (char) (c - 32);
 		return c;
 	}
-	static public char lowerCase (char c) {	//Si estÃ¡ en mayÃºsucla, la pasa a minÃºscula
+	static public char lowerCase (char c) {	//Si estÃ¡ en mayúsucla, la pasa a minúscula
 		if(isUpperCase (c)) return (char) (c + 32);
 		return c;
 	}
