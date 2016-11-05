@@ -55,6 +55,7 @@ public class RandomManager { //Esta clase se encarga de generar boolean y char r
 	}
 	
 	public static void main(String[] args) {	//Esto es para probar el generador, calcula el largo de 1000 promedioraseñas
+		//Este método no debería ejecutarse núnca, está acá con el solo proposito de testear el generador
 		long promedio = 0;	//Esto se va a usar para calcular el promedio
 		for(int i = 0; i < 1000; i++) {	//Se ejecuta 1000 veces
 			int j = 0;

@@ -2,11 +2,11 @@ package Main;
 
 import java.util.Scanner;
 
-public class PasswordList {	//Clase para almacenar la lista de contraseñas
+public class PasswordList {	//Clase para almacenar una lista de contraseñas
 	
 	private String[] passwords;	//Array de Strings que contiene todas las contraseñas
 	private boolean empty = true; //Boolean que indica si la lista está vacía
-	final static public int max = 5000;
+	final static public int max = 5000;	//Máximo de contraseñas que puede almacenar una lista
 	Scanner in = new Scanner(System.in);	//El Scanner
 	
 	public String addPassword (String str) {	//Método que añade un valor de tipo String al final de la lista de contraseñas "passwords"
@@ -26,11 +26,14 @@ public class PasswordList {	//Clase para almacenar la lista de contraseñas
 					passwords[i] = temp[i];	//Copia todo los valores de "temp" a "passwords"
 				}
 			}
-			return Codes.OK;
-		} else return Codes.ERROR;
+			return Codes.OK;	//OK si todo salió bien
+		} else return Codes.ERROR;	//ERROR si se alcanzó el máximo
 	}
 	
-	public void add (PasswordList list) {
+	public void add (PasswordList list) {	//Añade una lista a esta
+		//Este método quedó obsoleto por el método add() de PasswordDatabase
+		//Si la suma de las contraseñas existentes, mas las que se van a añadir, sobrepasan el máximo (5000), se pierden contraseñas
+		//Por lo que este método no debería ser usado
 		String str;
 		do {
 			str = list.nextPassword();
@@ -38,7 +41,7 @@ public class PasswordList {	//Clase para almacenar la lista de contraseñas
 		} while (str != Codes.EOL);
 	}
 	
-	public String nextPassword () {
+	public String nextPassword () {	//Devuelve la primer contraseña guardada
 		if(!empty){//Si no esta vacío... (si lo está no hay nada que leer)
 			if(passwords.length == 1) { //Si queda una contraseña
 				empty = true;	//Lo marca como vacío (evita que se pueda leer varias veces el último valor, ya que no se borra)
@@ -58,7 +61,7 @@ public class PasswordList {	//Clase para almacenar la lista de contraseñas
 		return Codes.EOL;	//CODIGO EOL (End Of List)
 	}
 	
-	public int length (){
+	public int length (){	//Devuelve el largo de la lísta de contraseñas
 		if(!empty) return passwords.length;
 		return 0;
 	}
@@ -67,15 +70,15 @@ public class PasswordList {	//Clase para almacenar la lista de contraseñas
 		
 	}
 	
-	public String[] getStringArray () {
+	public String[] getStringArray () {	//Devuelve el array "passwords"
 		return passwords;
 	}
 	
-	public boolean isEmpty () {
+	public boolean isEmpty () {	//Devuelve el boolean "empty"
 		return empty;
 	}
 	
-	public PasswordList (PasswordList template) {
+	public PasswordList (PasswordList template) {	//Crea una lista, usando los valores de otra (template). Básicamente, la copia
 		passwords = template.getStringArray();
 		empty = template.isEmpty();
 	}

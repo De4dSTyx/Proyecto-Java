@@ -39,11 +39,11 @@ public class StringTools {
 		   c == 'o' || c == 'u') return true;
 		return false;	
 	}
-	static public char upperCase (char c) {	//Si estÃ¡ en minúscula, la pasa a mayúscula
+	static public char upperCase (char c) {	//Si está en minúscula, la pasa a mayúscula
 		if(isLowerCase (c)) return (char) (c - 32);
 		return c;
 	}
-	static public char lowerCase (char c) {	//Si estÃ¡ en mayúsucla, la pasa a minúscula
+	static public char lowerCase (char c) {	//Si está en mayúsucla, la pasa a minúscula
 		if(isUpperCase (c)) return (char) (c + 32);
 		return c;
 	}
