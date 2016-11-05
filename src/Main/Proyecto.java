@@ -8,40 +8,40 @@ public class Proyecto {
 	
 	public static void main(String[] args) {
 		PasswordDatabase lista = new PasswordDatabase();	//Base de datos principal
-		int menu = 1;	//Al haber varios menús, con esta variable guardamos el manú actual
-		/* Hay 4 menús:
-		 * 1 - El menú principal
-		 * 2 - El menú de "Cargar contraseñas"
-		 * 3 - El menú de "Borrar contraseñas"
-		 * 0 - No es un menú, es para salír del programa
+		int menu = 1;	//Al haber varios menÃºs, con esta variable guardamos el manÃº actual
+		/* Hay 4 menÃºs:
+		 * 1 - El menÃº principal
+		 * 2 - El menÃº de "Cargar contraseÃ±as"
+		 * 3 - El menÃº de "Borrar contraseÃ±as"
+		 * 0 - No es un menÃº, es para salÃ­r del programa
 		 */
-		int opc;	//Guarda la opción ingresada por el usuario
+		int opc;	//Guarda la opciÃ³n ingresada por el usuario
 		do{
-			printOptions(menu);	//Imprime las opciones del menú correspondiente
+			printOptions(menu);	//Imprime las opciones del menÃº correspondiente
 			opc = in.nextInt();	//Guarda la respuesta del usuario
 			PasswordDatabase listaTemp;	//Base de datos temporal usada para poder sacar datos sin modificar la base de datos principal
 			switch(menu) {	//Dependiendo de la variable menu...
-			case 1:	//Para el menú principal hay gran cantidad de opciones posibles
+			case 1:	//Para el menÃº principal hay gran cantidad de opciones posibles
 				switch(opc){
 				case 1:
-					menu = 2;	//Si se elije la opción 1 del primer menú, se va al segundo menú
+					menu = 2;	//Si se elije la opciÃ³n 1 del primer menÃº, se va al segundo menÃº
 					break;
-				case 2:	//Si se elije la opción 2
+				case 2:	//Si se elije la opciÃ³n 2
 					listaTemp = new PasswordDatabase(lista);	//Se copia la base de datos principal en la temporal
-					showPasswordDatabase(listaTemp);	//Y muestra las contraseñas de la temporal
+					showPasswordDatabase(listaTemp);	//Y muestra las contraseÃ±as de la temporal
 					break;
-				case 3:	//Si se elije la opción 3
+				case 3:	//Si se elije la opciÃ³n 3
 					listaTemp = new PasswordDatabase(lista);	//Igual que en la 2
-					showSecurity(listaTemp);	//Pero acá se muestra la seguridad de las contraseñas
+					showSecurity(listaTemp);	//Pero acÃ¡ se muestra la seguridad de las contraseÃ±as
 					break;
-				case 4:	//En la opción 4
+				case 4:	//En la opciÃ³n 4
 					listaTemp = new PasswordDatabase(lista);	//Se hace una copia al igual que en las opciones 2 y 3
-					verify(listaTemp);	//Y verifica las contraseñas según las reglas dadas en la
+					verify(listaTemp);	//Y verifica las contraseÃ±as segÃºn las reglas dadas en la
 					break;
-				case 5:	//En la opción 5
-					menu = 3; //Se pasa al tercer menú
+				case 5:	//En la opciÃ³n 5
+					menu = 3; //Se pasa al tercer menÃº
 					break;
-				case 0:	//Y con la opción cero
+				case 0:	//Y con la opciÃ³n cero
 					menu = 0; //Se sale del programa
 					break;
 				case Codes._45617374657220456767: //45617374657220456767
@@ -58,31 +58,31 @@ public class Proyecto {
 					break;
 				}
 				break;
-			case 2:	//Para el menú de cargar contraseñas
+			case 2:	//Para el menÃº de cargar contraseÃ±as
 				switch(opc){
-				case 1:	//La primer opción, pide al usuario que ingrese contraseñas a mano
+				case 1:	//La primer opciÃ³n, pide al usuario que ingrese contraseÃ±as a mano
 					lista.askForPasswords();
 					break;
-				case 2:	//La segundda, carga contraseñas de un .txt
+				case 2:	//La segundda, carga contraseÃ±as de un .txt
 					System.out.print("Path del .txt : ");
-					String input = in.next();	//Pide al usuario la ubicación del .txt (en relación con el .jar exportado)
-					listaTemp = FileLoader.load(input);	//Carga las contraseñas del archivo de texto
-					lista.add(listaTemp);	//Y las añade al la base de datos principal
+					String input = in.next();	//Pide al usuario la ubicaciÃ³n del .txt (en relaciÃ³n con el .jar exportado)
+					listaTemp = FileLoader.load(input);	//Carga las contraseÃ±as del archivo de texto
+					lista.add(listaTemp);	//Y las aÃ±ade al la base de datos principal
 					break;
 				case 3:	//Y la tercera las genera aleatoreamente
-					System.out.print("¿Cuántas? : ");
+					System.out.print("Â¿CuÃ¡ntas? : ");
 					int cant = in.nextInt();	//Cuantas quiere generar el usuario
-					lista = generate(lista, cant);	//Genera la cantidad de contraseñas especificadas por el usuario
+					lista = generate(lista, cant);	//Genera la cantidad de contraseÃ±as especificadas por el usuario
 					break;
-				case 0: //Por último, con la opción 0, vuelve al menú principal
+				case 0: //Por Ãºltimo, con la opciÃ³n 0, vuelve al menÃº principal
 					menu = 1;
 				}
 				break;
-			case 3:	//Para el menú de borrar contraseñas hay dos opciones
+			case 3:	//Para el menÃº de borrar contraseÃ±as hay dos opciones
 				switch(opc){
-				case 1:	//Opción 1, borra la base de datos
+				case 1:	//OpciÃ³n 1, borra la base de datos
 					lista = new PasswordDatabase();
-				case 0: //Opción 0, vuelve al menú principal
+				case 0: //OpciÃ³n 0, vuelve al menÃº principal
 					menu = 1;
 					break;
 				}
@@ -94,23 +94,23 @@ public class Proyecto {
 		} while (menu != 0);	//Cuando menu es 0 sale del programa
 	}
 	
-	private static void printOptions(int n) {	//Imprime las opciones del menú correspondiente
+	private static void printOptions(int n) {	//Imprime las opciones del menÃº correspondiente
 		switch (n) {
-		case 1:	//Para el menú principal imprime lo siguiente:
-			System.out.println("1 Cargar contraseñas\n2 Ver contraseñas\n3 Ver seguridad\n4 Verificar contraseñas\n5 Eliminar contraseñas\n0 Salir");
+		case 1:	//Para el menÃº principal imprime lo siguiente:
+			System.out.println("1 Cargar contraseÃ±as\n2 Ver contraseÃ±as\n3 Ver seguridad\n4 Verificar contraseÃ±as\n5 Eliminar contraseÃ±as\n0 Salir");
 			break;
-		case 2:	//Para el menú de cargar contraseñas imprime:
-			System.out.println("1 Añadir desde consola\n2 Añadir desde .txt\n3 Generar\n0 Volver");
+		case 2:	//Para el menÃº de cargar contraseÃ±as imprime:
+			System.out.println("1 AÃ±adir desde consola\n2 AÃ±adir desde .txt\n3 Generar\n0 Volver");
 			break;
-		case 3:	//Y para el menú de barrar contraseñas imprime:
+		case 3:	//Y para el menÃº de barrar contraseÃ±as imprime:
 			System.out.println("1 Borrar todo\n0 Volver (No borra)");
 			break;
 		}
-		System.out.print("Opción: ");//Al final, imprime esta linea para que el usuario ingrese la opción
+		System.out.print("OpciÃ³n: ");//Al final, imprime esta linea para que el usuario ingrese la opciÃ³n
 	}
 	
-	private static void showPasswordDatabase(PasswordDatabase list) {
-		System.out.println("Hay un total de " + list.length() + " contraseñas");
+	private static void showPasswordDatabase(PasswordDatabase list) {  //mÃ©todo que va escribiendo las contraseÃ±as una por una hasta llegar al End Of List, tambiÃ©n nos indica la cantidad de contraseÃ±as ingresadas.
+		System.out.println("Hay un total de " + list.length() + " contraseÃ±as");
 		String password;
 		do {
 			password = list.nextPassword();
@@ -120,7 +120,7 @@ public class Proyecto {
 		} while (password != Codes.EOL);
 	}
 	
-	private static void showSecurity(PasswordDatabase list) {
+	private static void showSecurity(PasswordDatabase list) { //mÃ©todo que nos indica la seguridad una por una de las contraseÃ±as ingresadas
 		String password;
 		do {
 			password = list.nextPassword();
@@ -131,7 +131,7 @@ public class Proyecto {
 		} while (password != Codes.EOL);
 	}
 	
-	private static void verify(PasswordDatabase list) {
+	private static void verify(PasswordDatabase list) { //mÃ©todo "verificador" que utiliza a la clase PasswordVerifier para eso, verificar las contraseÃ±as ingresadas y nos dice si son aceptadas o no
 		String password;
 		boolean isPasswordCorrect;
 		do {
@@ -144,13 +144,13 @@ public class Proyecto {
 		} while (password != Codes.EOL);
 	}
 	
-	private static PasswordDatabase generate(PasswordDatabase list, int c){
-		long startTime = System.currentTimeMillis();
-		for(int i = 0; i < c; i++){
-			list.addPassword(new RandomPassword().toString());
+	private static PasswordDatabase generate(PasswordDatabase list, int c){ 
+		long startTime = System.currentTimeMillis(); 
+		for(int i = 0; i < c; i++){  //utilizamos un for para aÃ±adir, en este caso, c cantidad de contraseÃ±as
+			list.addPassword(new RandomPassword().toString()); //genera una contraseÃ±a totalmente aleatoria, la pasa a un string y finalmente la aÃ±ade a la lista
 		}
-		long elapsedTime = System.currentTimeMillis() - startTime;
-		System.out.println("Se tardó " + elapsedTime + " milisegundos en generar " + c + " contraseñas");
+		long elapsedTime = System.currentTimeMillis() - startTime;//tiempo que transcurriÃ³ al generar las contraseÃ±as
+		System.out.println("Se tardÃ³ " + elapsedTime + " milisegundos en generar " + c + " contraseÃ±as"); //Nos indica cuÃ¡nto tiempo en milisegundos tardÃ³ en generar las contraseÃ±as
 		return list;
 	}
 	
