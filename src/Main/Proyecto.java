@@ -7,36 +7,42 @@ public class Proyecto {
 	static Scanner in = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		PasswordDatabase lista = new PasswordDatabase();
-		int menu = 1;
-		int opc;
+		PasswordDatabase lista = new PasswordDatabase();	//Base de datos principal
+		int menu = 1;	//Al haber varios menús, con esta variable guardamos el manú actual
+		/* Hay 4 menús:
+		 * 1 - El menú principal
+		 * 2 - El menú de "Cargar contraseñas"
+		 * 3 - El menú de "Borrar contraseñas"
+		 * 0 - No es un menú, es para salír del programa
+		 */
+		int opc;	//Guarda la opción ingresada por el usuario
 		do{
-			printOptions(menu);
-			opc = in.nextInt();
-			PasswordDatabase listaTemp;
-			switch(menu) {
-			case 1:
+			printOptions(menu);	//Imprime las opciones del menú correspondiente
+			opc = in.nextInt();	//Guarda la respuesta del usuario
+			PasswordDatabase listaTemp;	//Base de datos temporal usada para poder sacar datos sin modificar la base de datos principal
+			switch(menu) {	//Dependiendo de la variable menu...
+			case 1:	//Para el menú principal hay gran cantidad de opciones posibles
 				switch(opc){
 				case 1:
-					menu = 2;
+					menu = 2;	//Si se elije la opción 1 del primer menú, se va al segundo menú
 					break;
-				case 2:
-					listaTemp = new PasswordDatabase(lista);
-					showPasswordDatabase(listaTemp);
+				case 2:	//Si se elije la opción 2
+					listaTemp = new PasswordDatabase(lista);	//Se copia la base de datos principal en la temporal
+					showPasswordDatabase(listaTemp);	//Y muestra las contraseñas de la temporal
 					break;
-				case 3:
-					listaTemp = new PasswordDatabase(lista);
-					showSecurity(listaTemp);
+				case 3:	//Si se elije la opción 3
+					listaTemp = new PasswordDatabase(lista);	//Igual que en la 2
+					showSecurity(listaTemp);	//Pero acá se muestra la seguridad de las contraseñas
 					break;
-				case 4:
-					listaTemp = new PasswordDatabase(lista);
-					verify(listaTemp);
+				case 4:	//En la opción 4
+					listaTemp = new PasswordDatabase(lista);	//Se hace una copia al igual que en las opciones 2 y 3
+					verify(listaTemp);	//Y verifica las contraseñas según las reglas dadas en la
 					break;
-				case 5:
-					menu = 3;
+				case 5:	//En la opción 5
+					menu = 3; //Se pasa al tercer menú
 					break;
-				case 0:
-					menu = 0;
+				case 0:	//Y con la opción cero
+					menu = 0; //Se sale del programa
 					break;
 				case Codes._45617374657220456767: //45617374657220456767
 					System.out.println("4269656e76656e69646f2061206c612068657272616d69656e74612064652042656e63686d61726b696e672e\n"
@@ -52,31 +58,31 @@ public class Proyecto {
 					break;
 				}
 				break;
-			case 2:
+			case 2:	//Para el menú de cargar contraseñas
 				switch(opc){
-				case 1:
+				case 1:	//La primer opción, pide al usuario que ingrese contraseñas a mano
 					lista.askForPasswords();
 					break;
-				case 2:
+				case 2:	//La segundda, carga contraseñas de un .txt
 					System.out.print("Path del .txt : ");
-					String input = in.next();
-					listaTemp = FileLoader.load(input);
-					lista.add(listaTemp);
+					String input = in.next();	//Pide al usuario la ubicación del .txt (en relación con el .jar exportado)
+					listaTemp = FileLoader.load(input);	//Carga las contraseñas del archivo de texto
+					lista.add(listaTemp);	//Y las añade al la base de datos principal
 					break;
-				case 3:
+				case 3:	//Y la tercera las genera aleatoreamente
 					System.out.print("¿Cuántas? : ");
-					int cant = in.nextInt();
-					lista = generate(lista, cant);
+					int cant = in.nextInt();	//Cuantas quiere generar el usuario
+					lista = generate(lista, cant);	//Genera la cantidad de contraseñas especificadas por el usuario
 					break;
-				case 0:
+				case 0: //Por último, con la opción 0, vuelve al menú principal
 					menu = 1;
 				}
 				break;
-			case 3:
+			case 3:	//Para el menú de borrar contraseñas hay dos opciones
 				switch(opc){
-				case 1:
+				case 1:	//Opción 1, borra la base de datos
 					lista = new PasswordDatabase();
-				default:
+				case 0: //Opción 0, vuelve al menú principal
 					menu = 1;
 					break;
 				}
@@ -85,22 +91,22 @@ public class Proyecto {
 				break;
 			}
 			System.out.println();
-		} while (menu != 0);
+		} while (menu != 0);	//Cuando menu es 0 sale del programa
 	}
 	
-	private static void printOptions(int n) {
+	private static void printOptions(int n) {	//Imprime las opciones del menú correspondiente
 		switch (n) {
-		case 1:
+		case 1:	//Para el menú principal imprime lo siguiente:
 			System.out.println("1 Cargar contraseñas\n2 Ver contraseñas\n3 Ver seguridad\n4 Verificar contraseñas\n5 Eliminar contraseñas\n0 Salir");
 			break;
-		case 2:
+		case 2:	//Para el menú de cargar contraseñas imprime:
 			System.out.println("1 Añadir desde consola\n2 Añadir desde .txt\n3 Generar\n0 Volver");
 			break;
-		case 3:
+		case 3:	//Y para el menú de barrar contraseñas imprime:
 			System.out.println("1 Borrar todo\n0 Volver (No borra)");
 			break;
 		}
-		System.out.print("Opción: ");
+		System.out.print("Opción: ");//Al final, imprime esta linea para que el usuario ingrese la opción
 	}
 	
 	private static void showPasswordDatabase(PasswordDatabase list) {
